@@ -2,6 +2,14 @@
   "apiVersion": 2,
   "title": "WP Learn WCEU: Form Block",
   "name": "wp-learn-wceu/form-block",
+  "attributes": {
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": "p",
+      "default": "Please enter your details:"
+    }
+  },
   "category": "layout",
   "icon": "media-code",
   "editorScript": "file:./block.js"

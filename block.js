@@ -1,12 +1,27 @@
-(function( blocks, element ) {
-
+(function( blocks, element, blockEditor ) {
 	var createElement = element.createElement;
+	var useBlockProps = blockEditor.useBlockProps;
+	var RichText = blockEditor.RichText;
 
 	blocks.registerBlockType( 'wp-learn-wceu/form-block', {
-		edit: function() {
+		edit: function( { attributes, setAttributes } ) {
+			var blockProps = useBlockProps();
+
+			function onChangeContent( newContent ) {
+				setAttributes( { content: newContent } );
+			}
+
 			return createElement(
 				'div',
-				{},
+				blockProps,
+				createElement(
+					RichText,
+					{
+						tagName: 'p',
+						onChange: onChangeContent,
+						value: attributes.content,
+					},
+				),
 				createElement(
 					'form',
 					{},
@@ -62,14 +77,22 @@
 								value: 'Submit',
 							},
 						),
-					)
+					),
 				),
 			);
 		},
-		save: function() {
+		save: function( props ) {
+			var blockProps = useBlockProps.save();
 			return createElement(
 				'div',
-				{},
+				blockProps,
+				createElement(
+					RichText.Content,
+					{
+						tagName: 'p',
+						value: props.attributes.content,
+					},
+				),
 				createElement(
 					'form',
 					{},
@@ -125,9 +148,9 @@
 								value: 'Submit',
 							},
 						),
-					)
+					),
 				),
 			);
 		},
 	} );
-})( window.wp.blocks, window.wp.element );
+})( window.wp.blocks, window.wp.element, window.wp.blockEditor );
