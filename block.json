@@ -8,6 +8,10 @@
       "source": "html",
       "selector": "p",
       "default": "Please enter your details:"
+    },
+    "alignment": {
+      "type": "string",
+      "default": "none"
     }
   },
   "category": "layout",

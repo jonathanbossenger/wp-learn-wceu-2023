@@ -1,7 +1,14 @@
-(function( blocks, element, blockEditor ) {
+(function( blocks, element, blockEditor, components ) {
 	var createElement = element.createElement;
 	var useBlockProps = blockEditor.useBlockProps;
 	var RichText = blockEditor.RichText;
+
+	var BlockControls = blockEditor.BlockControls;
+	var AlignmentControl = blockEditor.AlignmentControl;
+
+	var InspectorControls = blockEditor.InspectorControls;
+
+	var RangeControl = components.RangeControl;
 
 	blocks.registerBlockType( 'wp-learn-wceu/form-block', {
 		edit: function( { attributes, setAttributes } ) {
@@ -11,29 +18,63 @@
 				setAttributes( { content: newContent } );
 			}
 
+			function onChangeAlignment( newAlignment ) {
+				setAttributes( { alignment: newAlignment === undefined ? 'none' : newAlignment } );
+			}
+
 			return createElement(
 				'div',
 				blockProps,
+				createElement( BlockControls,
+					{
+						key: 'controls'
+					},
+					createElement( AlignmentControl,
+						{
+							value: attributes.alignment,
+							onChange: onChangeAlignment,
+						}
+					)
+				),
 				createElement(
 					RichText,
 					{
 						tagName: 'p',
+						style: {
+							textAlign: attributes.alignment
+						},
 						onChange: onChangeContent,
 						value: attributes.content,
 					},
 				),
 				createElement(
 					'form',
-					{},
+					{
+						style: {
+							textAlign: attributes.alignment
+						}
+					},
+					createElement( BlockControls,
+						{
+							key: 'controls'
+						},
+						createElement( RangeControl,
+							{
+								label: 'Padding',
+							}
+						)
+					),
 					createElement(
 						'div',
 						{
 							className: 'form-group',
+							style: { padding: '10px' }
 						},
 						createElement(
 							'label',
 							{
 								for: 'name',
+								style: { display: 'inline-block', width: '75px' }
 							},
 							'Name',
 						),
@@ -50,11 +91,13 @@
 						'div',
 						{
 							className: 'form-group',
+							style: { padding: '10px' }
 						},
 						createElement(
 							'label',
 							{
 								for: 'email',
+								style: { display: 'inline-block', width: '75px' }
 							},
 							'Email',
 						),
@@ -69,7 +112,9 @@
 					),
 					createElement(
 						'div',
-						{},
+						{
+							style: { padding: '10px' }
+						},
 						createElement(
 							'input',
 							{
@@ -90,21 +135,26 @@
 					RichText.Content,
 					{
 						tagName: 'p',
+						style: { textAlign: props.attributes.alignment },
 						value: props.attributes.content,
 					},
 				),
 				createElement(
 					'form',
-					{},
+					{
+						style: { textAlign: props.attributes.alignment }
+					},
 					createElement(
 						'div',
 						{
 							className: 'form-group',
+							style: { padding: '10px' }
 						},
 						createElement(
 							'label',
 							{
 								for: 'name',
+								style: { display: 'inline-block', width: '75px' }
 							},
 							'Name',
 						),
@@ -121,11 +171,13 @@
 						'div',
 						{
 							className: 'form-group',
+							style: { padding: '10px' }
 						},
 						createElement(
 							'label',
 							{
 								for: 'email',
+								style: { display: 'inline-block', width: '75px' }
 							},
 							'Email',
 						),
@@ -140,7 +192,9 @@
 					),
 					createElement(
 						'div',
-						{},
+						{
+							style: { padding: '10px' }
+						},
 						createElement(
 							'input',
 							{
@@ -153,4 +207,4 @@
 			);
 		},
 	} );
-})( window.wp.blocks, window.wp.element, window.wp.blockEditor );
+})( window.wp.blocks, window.wp.element, window.wp.blockEditor, window.wp.components );
