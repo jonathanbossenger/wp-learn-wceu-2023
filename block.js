@@ -1,5 +1,6 @@
 (function( blocks, element, blockEditor, components ) {
 	var createElement = element.createElement;
+
 	var useBlockProps = blockEditor.useBlockProps;
 	var RichText = blockEditor.RichText;
 
@@ -7,8 +8,6 @@
 	var AlignmentControl = blockEditor.AlignmentControl;
 
 	var InspectorControls = blockEditor.InspectorControls;
-
-	var RangeControl = components.RangeControl;
 
 	blocks.registerBlockType( 'wp-learn-wceu/form-block', {
 		edit: function( { attributes, setAttributes } ) {
@@ -54,16 +53,6 @@
 							textAlign: attributes.alignment
 						}
 					},
-					createElement( BlockControls,
-						{
-							key: 'controls'
-						},
-						createElement( RangeControl,
-							{
-								label: 'Padding',
-							}
-						)
-					),
 					createElement(
 						'div',
 						{
