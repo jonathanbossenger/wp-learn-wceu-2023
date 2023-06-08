@@ -57,13 +57,11 @@
 						'div',
 						{
 							className: 'form-group',
-							style: { padding: '10px' }
 						},
 						createElement(
 							'label',
 							{
 								for: 'name',
-								style: { display: 'inline-block', width: '75px' }
 							},
 							'Name',
 						),
@@ -80,13 +78,11 @@
 						'div',
 						{
 							className: 'form-group',
-							style: { padding: '10px' }
 						},
 						createElement(
 							'label',
 							{
 								for: 'email',
-								style: { display: 'inline-block', width: '75px' }
 							},
 							'Email',
 						),
@@ -102,7 +98,6 @@
 					createElement(
 						'div',
 						{
-							style: { padding: '10px' }
 						},
 						createElement(
 							'input',
@@ -137,13 +132,11 @@
 						'div',
 						{
 							className: 'form-group',
-							style: { padding: '10px' }
 						},
 						createElement(
 							'label',
 							{
 								for: 'name',
-								style: { display: 'inline-block', width: '75px' }
 							},
 							'Name',
 						),
@@ -160,13 +153,11 @@
 						'div',
 						{
 							className: 'form-group',
-							style: { padding: '10px' }
 						},
 						createElement(
 							'label',
 							{
 								for: 'email',
-								style: { display: 'inline-block', width: '75px' }
 							},
 							'Email',
 						),
@@ -181,9 +172,6 @@
 					),
 					createElement(
 						'div',
-						{
-							style: { padding: '10px' }
-						},
 						createElement(
 							'input',
 							{
