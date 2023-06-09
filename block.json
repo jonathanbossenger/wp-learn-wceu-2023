@@ -16,5 +16,6 @@
   },
   "category": "layout",
   "icon": "media-code",
-  "editorScript": "file:./block.js"
+  "editorScript": "file:./block.js",
+  "style": "file:./block.css"
 }

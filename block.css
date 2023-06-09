@@ -1,0 +1,13 @@
+.wp-block-wp-learn-wceu-form-block {
+    border: 1px dotted #f00;
+}
+
+.wp-block-wp-learn-wceu-form-block .form-group {
+    padding: 0.8em;
+}
+
+.wp-block-wp-learn-wceu-form-block label {
+    display: inline-block;
+    margin-bottom: 0.5em;
+    width: 10%;
+}
